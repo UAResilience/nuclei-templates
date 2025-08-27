@@ -1,0 +1,32 @@
+id: roundcube-detected
+info:
+  name: Roundcube detection
+  author: kay
+  severity: information
+  description: |
+    Detection roundcube web-mail agent (https://roundcube.net/)
+  tags: mail,roundcube,technology
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/mail/index.php"
+      - "{{BaseURL}}/index.php"
+
+    headers:
+      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+
+    matchers:
+      - type: word
+        words:
+          - "Roundcube"
+        part: body
+        condition: or
+        name: roundcube-in-body
+        
+    extractors:
+      - type: regex
+        part: body
+        regex:
+          - "(Roundcube)"
+        group: 1
