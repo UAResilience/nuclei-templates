@@ -1,0 +1,18 @@
+id: scpc-ssl-info-extractor
+
+info:
+  name: SSL Certificate Information Extractor
+  author: kay
+  severity: info
+  description: SSL Extract
+  tags: ssl, recon, info
+
+ssl:
+  - address: "{{Hostname}}"
+  
+    extractors: 
+      - type: json
+        name: ssl_info
+        json:
+          - "."
+
