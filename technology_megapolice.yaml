@@ -1,0 +1,23 @@
+id: discovery-megapolise
+
+info:
+  name: Megapolice Technology Discovery
+  author: kay
+  severity: info
+  description: |
+    This template checks if the page is Megapolice
+  tags: tech,scpc
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: or
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "<title>docflow</title>"
+          - "<title>Megapolis</title>"
+          - "<title>[SEDsed]</title>"
+          - "<title>.*СЕД.*</title>"
