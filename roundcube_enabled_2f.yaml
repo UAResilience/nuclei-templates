@@ -1,0 +1,21 @@
+id: roundcube-webmail-twofactor
+
+info:
+  name: Roundcube Webmail Detection the 2F
+  author: Kay
+  severity: info
+  description: |
+    Detects the presence of Roundcube webmail client  from the HTTP response.
+  tags: webmail, roundcube
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"  # Target the base URL
+
+    matchers-condition: and
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "twofactor_gauthenticator"
