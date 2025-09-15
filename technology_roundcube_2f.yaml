@@ -6,12 +6,15 @@ info:
   severity: info
   description: |
     Detects the presence of Roundcube webmail client  from the HTTP response.
+  reference: 
+    - https://github.com/alexandregz/twofactor_gauthenticator
   tags: webmail, roundcube
 
 http:
   - method: GET
     path:
-      - "{{BaseURL}}"  # Target the base URL
+      - "{{BaseURL}}"
+      - "{{BaseURL}}/mail/"
 
     matchers-condition: and
     matchers:
