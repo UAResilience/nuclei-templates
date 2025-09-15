@@ -1,0 +1,24 @@
+id: scpc-ftp-anonymouse-login
+info:
+  name: FTP Anonymouse login.
+  author: kay
+  severity: info
+  description: FTP service is configured with allowing anonymouse login.
+  reference: https://documentation.ubuntu.com/server/how-to/networking/ftp/
+  tags: ftp,config
+
+tcp:
+  - inputs:
+      - data: "USER anonymous\r\n"
+        read: 1024
+      - data: "PASS nuclei\r\n"
+        read: 1024
+    host:
+      - "{{Host}}:21"
+    read-size: 2048
+    matchers:
+      - type: regex
+        part: all
+        name: FTP Anonymouse login successful
+        regex:
+          - '230 Login successful'
