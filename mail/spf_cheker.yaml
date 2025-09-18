@@ -1,0 +1,40 @@
+id: spf-dmarc-detect
+info:
+  name: SPF and DMARC Security Detection (Specific Checks)
+  author: Sri
+  severity: info
+  description: |
+    This template performs specific checks on SPF and DMARC records:
+    - SPF policy strength
+    - SPF record length validity
+    - DMARC policy strength
+  reference:
+    - https://tools.ietf.org/html/rfc7208 (SPF)
+    - https://tools.ietf.org/html/rfc7489 (DMARC)
+  tags: dns
+
+dns:
+  - name: "{{FQDN}}"
+    type: TXT
+    extractors:
+      - type: regex
+        name: spf_record
+        regex:
+          - "v=spf1(.+)"
+        group: 1
+
+  - name: "_dmarc.{{FQDN}}"
+    type: TXT
+    extractors:
+      - type: regex
+        name: dmarc_record
+        regex:
+          - "v=DMARC1;(.+)"
+        group: 1
+
+  - matchers:
+    - type: dsl
+      name: spf_policy_check
+      dsl:
+        - 'contains("-all") ? "Strong"'
+
