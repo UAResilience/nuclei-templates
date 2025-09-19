@@ -1,0 +1,43 @@
+id: spf-dmarc-detect
+info:
+  name: DMARC Detection
+  author: kay
+  severity: info
+  description: |
+    This template performs specific checks on SPF and DMARC records:
+  reference:
+    - https://www.cisco.com/c/en/us/support/docs/security/secure-email-gateway/217073-how-to-use-dig-nslookup-to-find-spf-dki.html
+
+  tags: dns, mail
+
+dns:
+  - name: "_dmarc.{{FQDN}}"
+    type: TXT
+    class: inet
+    recursion: true
+    retries: 2
+    extractors:
+      - type: regex
+        part: answer
+        name: dmarc_record
+        regex:
+          - "(.+)"
+        group: 1
+
+    matchers-condition: or
+    
+    matchers:
+      - type: dsl
+        name: dmarc_policy_none
+        dsl:
+          - "contains(dmarc_record,'p=none')"
+
+      - type: dsl
+        name: dmarc_policy_reject
+        dsl:
+          - "contains(dmarc_record,'p=reject')"
+
+      - type: dsl
+        name: dmarc_policy_quarantine
+        dsl:
+          - "contains(dmarc_record,'p=quarantine')"  
