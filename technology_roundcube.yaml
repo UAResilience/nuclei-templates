@@ -5,7 +5,7 @@ info:
   severity: info
   description: |
     Detect the Roundcube
-  tags: custom,example,test
+  tags: tech
 
 requests:
   - method: GET

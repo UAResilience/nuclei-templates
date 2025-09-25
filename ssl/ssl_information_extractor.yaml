@@ -5,7 +5,7 @@ info:
   author: kay
   severity: info
   description: SSL Extract
-  tags: ssl, recon, info
+  tags: ssl, tech
 
 ssl:
   - address: "{{Hostname}}"
