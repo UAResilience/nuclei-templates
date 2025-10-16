@@ -1,11 +1,11 @@
 id: scpc-ssl-info-extractor
 
 info:
-  name: SSL Certificate Information Extractor
+  name: SSL Certificate Information
   author: kay
   severity: info
   description: SSL Extract
-  tags: ssl, tech
+  tags: ssl,tech
 
 ssl:
   - address: "{{Hostname}}"

@@ -1,11 +1,13 @@
-id: roundcube-detected
+id: roundcube-detection
 info:
-  name: Roundcube detection
+  name: Roundcube
   author: kay
   severity: info
   description: |
     Detect the Roundcube
   tags: tech
+  reference:
+    - https://roundcube.net/
 
 requests:
   - method: GET
@@ -22,7 +24,7 @@ requests:
           - "Roundcube"
         part: body
         condition: or
-        name: roundcube-in-body
+
     extractors:
       - type: regex
         part: body

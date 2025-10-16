@@ -1,6 +1,6 @@
 id: spf-dmarc-detect
 info:
-  name: SPF and Security Detection (Specific Checks)
+  name: SPF Checks
   author: kay
   severity: info
   description: |
