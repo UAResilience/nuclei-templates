@@ -8,7 +8,7 @@ info:
   reference:
     - https://www.cisco.com/c/en/us/support/docs/security/secure-email-gateway/217073-how-to-use-dig-nslookup-to-find-spf-dki.html
 
-  tags: dns, mail
+  tags: dns, mail, tech
 
 dns:
   - name: "_dmarc.{{FQDN}}"
