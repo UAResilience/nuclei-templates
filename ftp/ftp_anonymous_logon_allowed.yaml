@@ -5,7 +5,7 @@ info:
   severity: info
   description: FTP service is configured with allowing anonymouse login.
   reference: https://documentation.ubuntu.com/server/how-to/networking/ftp/
-  tags: ftp,config
+  tags: ftp,config,info
 
 tcp:
   - inputs:
